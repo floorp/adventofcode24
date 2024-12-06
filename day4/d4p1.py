@@ -1,19 +1,21 @@
 import inputfile as input
 
-crossword_array = input.samplefile
+crossword_array = input.realfile
 
 total  = 0
 def findHorzontalWord(row_in,col_in):
     global total
     if col_in != len(crossword_array)-1:
-        next_let = col_in+1
-        if crossword_array[row_in][next_let] == "M" and next_let <len(crossword_array[0]):
-            next_let = next_let+1
-            # print(row_in,next_let)
-            if crossword_array[row_in][next_let] == "A"and next_let <len(crossword_array[0]):
+        remaining_len = (len(crossword_array)-1) -col_in
+        if remaining_len >=3:
+            next_let = col_in+1
+            if crossword_array[row_in][next_let] == "M" and next_let <len(crossword_array[0]):
                 next_let = next_let+1
-                if crossword_array[row_in][next_let] == "S" and next_let <len(crossword_array[0]):
-                    total = total+1
+                # print(row_in,next_let)
+                if crossword_array[row_in][next_let] == "A"and next_let <len(crossword_array[0]):
+                    next_let = next_let+1
+                    if crossword_array[row_in][next_let] == "S" and next_let <len(crossword_array[0]):
+                        total = total+1
     if col_in !=0:
         next_let = col_in-1
         if crossword_array[row_in][next_let] == "M" and next_let <len(crossword_array[0]):
@@ -25,13 +27,15 @@ def findHorzontalWord(row_in,col_in):
 def findVerticalWord(row_in,col_in):
     global total
     if row_in != len(crossword_array)-1:
-        next_let = row_in+1
-        if crossword_array[next_let][col_in] == "M" and next_let <len(crossword_array):
-            next_let = next_let+1
-            if crossword_array[next_let][col_in] == "A"and next_let <len(crossword_array):
+        remaining_len = (len(crossword_array)-1) -row_in
+        if remaining_len >=3:
+            next_let = row_in+1
+            if crossword_array[next_let][col_in] == "M" and next_let <len(crossword_array):
                 next_let = next_let+1
-                if crossword_array[next_let][col_in] == "S":
-                    total = total+1
+                if crossword_array[next_let][col_in] == "A"and next_let <len(crossword_array):
+                    next_let = next_let+1
+                    if crossword_array[next_let][col_in] == "S":
+                        total = total+1
     if row_in != 0:
         next_let = row_in-1
         if crossword_array[next_let][col_in] == "M" and next_let <len(crossword_array):
